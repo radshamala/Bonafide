@@ -53,6 +53,7 @@ namespace Bonafide.Controllers
             else
             {
                 var stud = TempData["stud"];
+                int rad = 0;
                 if (Bid != null)
                 {
                     stud = _dbContext.StudBonas.FirstOrDefault(s => s.PassportNo == Bid);
