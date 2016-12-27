@@ -1,0 +1,112 @@
+﻿@model Bonafide.Models.StudBona
+@{
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Issued</h2>
+<div class="alert alert-dismissible alert-success">
+    <div class="form-group row">
+        <div class="col-md-2 moneymoney">
+            Passport No.:
+        </div>
+        <div class="col-md-3">
+            <strong> @Model.PassportNo</strong>
+        </div>
+        <div class="col-md-2 col-md-offset-3 moneymoney">
+            Issuded Date:
+        </div>
+        <div class="col-md-1">
+            <strong> @string.Format("{0:dd/MMM/yyyy}", Model.InitDate)</strong>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2 moneymoney">
+            Name:
+        </div>
+        <div class="col-md-10">
+            <strong> @Model.Name</strong>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2 moneymoney">
+            Course:
+        </div>
+        <div class="col-md-5">
+            <strong> @Model.Course</strong>
+        </div>
+        <div class="col-md-3 moneymoney">
+            Duration(in months):
+        </div>
+        <div class="col-lg-1">
+            <strong> @Model.Duration</strong>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2 moneymoney">
+            Total Fees:
+        </div>
+        <div class="col-lg-3">
+            <strong> @Model.Fees</strong>
+        </div>
+        <div class="col-md-2 moneymoney">
+            Fees Paid:
+        </div>
+        <div class="col-lg-1">
+            <strong> @Model.FeesPaid</strong>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2 moneymoney">
+            Agent:
+        </div>
+        <div class="col-lg-3">
+            <strong> @Model.Agent</strong>
+        </div>
+        <div class="col-md-2 moneymoney">
+            Agent - Phone Number:
+        </div>
+        <div class="col-lg-1">
+            <strong> @Model.AgentPhone</strong>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2 moneymoney">
+            Commission:
+        </div>
+        <div class="col-lg-3">
+            <strong> @Model.Commission</strong>
+        </div>
+        <div class="col-md-2 moneymoney">
+            Commission Paid:
+        </div>
+        <div class="col-lg-1">
+            <strong> @Model.CommissionPaid</strong>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2 moneymoney">
+            Note:
+        </div>
+        <div class="col-lg-10">
+            <strong class="breakme"> @Model.Note</strong>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+
+        $(function () {
+
+
+
+
+
+
+
+        });
+
+    </script>
+    
+    }

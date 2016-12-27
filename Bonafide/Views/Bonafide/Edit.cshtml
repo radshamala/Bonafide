@@ -1,0 +1,256 @@
+﻿@model Bonafide.Models.StudBona
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+@{
+    var PenFees = ((Model.Fees) - (Model.FeesPaid));
+    var PenCom = ((Model.Commission) - (Model.CommissionPaid));
+}
+
+
+@using (@Html.BeginForm("Save", "Bonafide", FormMethod.Post))
+{
+
+    <div class="row" id="loadme" style="margin-right:-69px; ">
+
+
+
+        <div class="col-lg-8 alert alert-warning" style="margin-left:1.5%">
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control " })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Duration)
+                @Html.TextBoxFor(m => m.Duration, new { @id = "mytextboxDur", @class = "form-control", @type = "number" })
+                @Html.ValidationMessageFor(m => m.Duration)
+            </div>
+            <div class="form-group ">
+
+                @Html.LabelFor(m => m.Course)
+                @Html.TextBoxFor(m => m.Course, new { @id = "mytextbox", @class = "form-control", @style = "width:700px;" })
+                @Html.ValidationMessageFor(m => m.Course)
+            </div>
+            <div class="form-group">
+                @Html.Label("Fees")
+                @Html.TextBoxFor(m => m.FeesPaid, new { @id = "mytextboxDur", @class = "form-control feesjs", @onkeypress = "return isNumberKey(event)" })
+                @Html.ValidationMessageFor(m => m.FeesPaid)
+            </div>
+            <div class="form-group">
+                @Html.Label("Commission")
+                @Html.TextBoxFor(m => m.CommissionPaid, new { @id = "mytextboxDur", @class = "form-control feesjs comjs", @onkeypress = "return isNumberKey(event)" })
+                @Html.ValidationMessageFor(m => m.CommissionPaid)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Note)
+                @Html.TextAreaFor(m => m.Note, new { @class = "form-control iamgray", @style = "height:113px; " })
+                @Html.ValidationMessageFor(m => m.Note)
+            </div>
+
+            <div class="form-group">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.ID)
+                @Html.HiddenFor(m => m.Fees)
+                @Html.HiddenFor(m => m.PassportNo)
+                <button id="submitme" type="submit" class="btn btn-lg btn-success ">Save Changes</button>
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-0 alert alert-info" style="margin-left:1%">
+
+
+
+            <div>
+                <div class="row down ">
+                    <div class="col-md-5 moneymoney">
+                        Passport No.:
+                    </div>
+                    <div>
+                        <strong> @Model.PassportNo</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Issuded Date:
+                    </div>
+                    <div>
+                        <strong> @string.Format("{0:dd/MMM/yyyy}", Model.InitDate)</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Name:
+                    </div>
+                    <div>
+                        <strong>  @Model.Name</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Course:
+                    </div>
+                    <div>
+                        <strong> @Model.Course</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Total Fees:
+                    </div>
+                    <div>
+                        <strong> @Model.Fees</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Fees Paid:
+                    </div>
+                    <div>
+                        <strong> @Model.FeesPaid</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Pending Fees:
+                    </div>
+                    @if (@PenFees > 0)
+                    {
+                        <div class="label label-danger">
+                            <strong class="penfeesjs">@PenFees</strong>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <strong class="penfeesjs">@PenFees</strong>
+                        </div>
+
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Agent:
+                    </div>
+                    <div>
+                        <strong> @Model.Agent</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Agent - Phone Number:
+                    </div>
+                    <div>
+                        <strong> @Model.AgentPhone</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Commission:
+                    </div>
+                    <div>
+                        <strong> @Model.Commission</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Commission Paid:
+                    </div>
+                    <div>
+                        <strong> @Model.CommissionPaid</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 down moneymoney">
+                        Pending Commission:
+                    </div>
+                    @if (PenCom > 0)
+                    {
+                        <div class="label label-danger">
+                            <strong class="pencomjs">@PenCom </strong>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <strong class="pencomjs">@PenCom </strong>
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-md-5 moneymoney">
+                        Note:
+                    </div>
+
+                </div>
+                <div>
+                    <strong class="breakme"> @Model.Note</strong>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+}
+@section scripts
+{
+    <script>
+
+
+
+        $(function () {
+            $(".feesjs").val("0");
+            $(".comjs").val("0");
+
+
+            //To make old note invisible
+            $(".iamgray").keypress(function () {
+                var me = $(this);
+                me.removeClass("iamgray");
+                me.addClass("iamblack");
+                me.val("");
+                $(".iamblack").off("keypress");
+            });
+
+
+            $("#submitme").click(function () {
+
+
+
+                var submit = $(this);
+                var fees = $(".feesjs").val();
+                var comm = $(".comjs").val();
+
+                var penfees = $(".penfeesjs").text();
+                var pencomm = $(".pencomjs").text();
+
+
+
+                if (fees > penfees && comm > pencomm)
+                    bootbox.alert("Commission and Fees are more than pending. \n Please rectify.");
+                else if (fees > penfees)
+                    bootbox.alert("Fees is collected more than pending. \n Please rectify.");
+                else if (comm > pencomm)
+                    bootbox.alert("Fees is collected more than pending. \n Please rectify.");
+                else
+                    return true;
+
+                return false;
+
+            });
+
+
+
+        });
+
+
+    </script>
+}

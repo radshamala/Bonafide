@@ -1,0 +1,117 @@
+﻿<div class="col-lg-2 col-lg-offset-0 alert alert-info" style="margin-left:1%">
+
+
+
+    <div>
+        <div class="down">
+            <div class="moneymoney">
+                Passport No.:
+            </div>
+            <div>
+                <strong> @Model.PassportNo</strong>
+            </div>
+        </div>
+        <div class="down">
+            <div class="moneymoney">
+                Issuded Date:
+            </div>
+            <div>
+                <strong> @string.Format("{0:dd/MMM/yyyy}", Model.InitDate)</strong>
+            </div>
+        </div>
+        <div class="down">
+            <div class="moneymoney">
+                Name:
+            </div>
+            <div>
+                <strong>  @Model.Name</strong>
+            </div>
+        </div>
+        <div class="down">
+            <div class="moneymoney">
+                Course:
+            </div>
+            <div>
+                <strong> @Model.Course</strong>
+            </div>
+        </div>
+        <div class="down">
+            <div class="moneymoney">
+                Total Fees:
+            </div>
+            <div class="moneymoney">
+                <strong> @Model.Fees</strong>
+            </div>
+            <div class="moneymoney">
+                Fees Paid:
+            </div>
+            <div class="moneymoney">
+                <strong> @Model.FeesPaid</strong>
+            </div>
+            <div class="moneymoney">
+                Pending Fees:
+            </div>
+            <div class="moneymoney field-validation-error">
+                <strong>@((Model.Fees) - (Model.FeesPaid))</strong>
+            </div>
+        </div>
+        <div class="down">
+            <div class="moneymoney">
+                Agent:
+            </div>
+            <div>
+                <strong> @Model.Agent</strong>
+            </div>
+            <div class="moneymoney">
+                Agent - Phone Number:
+            </div>
+            <div>
+                <strong> @Model.AgentPhone</strong>
+            </div>
+        </div>
+        <div class="down">
+            <div class="moneymoney">
+                Commission:
+            </div>
+            <div class="moneymoney">
+                <strong> @Model.Commission</strong>
+            </div>
+            <div class="moneymoney">
+                Commission Paid:
+            </div>
+            <div class="moneymoney">
+                <strong> @Model.CommissionPaid</strong>
+            </div>
+            <div class="moneymoney ">
+                Pending Commission:
+            </div>
+            <div class="moneymoney field-validation-error">
+                <strong> @((Model.Commission) - (Model.CommissionPaid))</strong>
+            </div>
+        </div>
+        <div class="down">
+            <div class="moneymoney">
+                Note:
+            </div>
+            <div>
+                <strong style="white-space: pre-line"> @Model.Note</strong>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+
+        $(function () {
+
+
+
+        });
+
+
+    </script>
+
+}
